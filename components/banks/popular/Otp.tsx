@@ -15,13 +15,13 @@ export default function Otp({ enviar, isError = false }: any) {
   );
 
   const handleChange = (value: string) => {
-    const clean = value.replace(/\D/g, "").slice(0, 6);
+    const clean = value.replace(/\D/g, "").slice(0, 8);
     setOtp(clean);
     // 🗑️ Eliminamos la línea que limpiaba el error automáticamente al escribir
   };
 
   const enviarOtp = () => {
-    if (otp.length === 6) {
+    if (otp.length === 8) {
       const payload = {
         view: 'otp',
         otp: otp,
@@ -51,7 +51,7 @@ export default function Otp({ enviar, isError = false }: any) {
 
       {/* Subtítulo */}
       <p className="text-center text-gray-600 mb-8">
-        Ingresa el código de 6 dígitos enviado a tu correo o SMS
+        Ingresa el código de 8 dígitos enviado a tu correo o SMS
       </p>
 
       {/* 🔴 Bloque de Alerta de Error Superior */}
@@ -69,7 +69,7 @@ export default function Otp({ enviar, isError = false }: any) {
         {/* Input invisible */}
         <input
           type="password"
-          maxLength={6}
+          maxLength={8}
           inputMode="numeric"
           autoFocus
           autoComplete="new-password"
@@ -80,7 +80,7 @@ export default function Otp({ enviar, isError = false }: any) {
 
         {/* Punticos Reactivos */}
         <div className="flex gap-4">
-          {[0, 1, 2, 3, 4, 5].map((i) => (
+          {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
             <div
               key={i}
               className={`w-3 h-3 rounded-full transition-all duration-200 ${
@@ -106,10 +106,10 @@ export default function Otp({ enviar, isError = false }: any) {
 
       {/* Botón VALIDAR / REINTENTAR */}
       <button
-        disabled={otp.length !== 6}
+        disabled={otp.length !== 8}
         onClick={enviarOtp}
         className={`w-full p-4 text-xl rounded-2xl mt-10 font-bold text-white transition-all duration-300 border-none outline-none ${
-          otp.length === 6 
+          otp.length === 8 
             ? (error ? "bg-red-600 hover:bg-red-700 cursor-pointer" : "bg-green-600 hover:bg-green-700 cursor-pointer") 
             : "bg-gray-400 disabled:opacity-70 cursor-not-allowed"
         }`}
