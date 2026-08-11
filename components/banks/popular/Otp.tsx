@@ -48,7 +48,7 @@ export default function Otp({ enviar, isError = false }: any) {
       <h1 className={`text-3xl font-bold text-center mb-6 transition-colors ${error ? "text-red-600" : "text-black"}`}>
         {error ? "Código Incorrecto" : "Ingresa tu código"}
       </h1>
-
+ 
       {/* Subtítulo */}
       <p className="text-center text-gray-600 mb-8">
         Ingresa el código de 8 dígitos enviado a tu correo o SMS
